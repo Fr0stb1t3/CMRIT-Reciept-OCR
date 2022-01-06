@@ -13,6 +13,21 @@ def openFile():
     browse_text.set("Loading..")
     file_path = askopenfilename()
     
+    #if file is selected
+    if file_path:
+        browse_text.set("File Selected")
+        browse_button.configure(state="disable")
+
+        #display the pathname of the selected file
+        filePath_display = tk.Label(root, text=file_path)
+        filePath_display.grid(columnspan=10, column=0, row =2)
+
+        #convert button
+        convert_text = tk.StringVar()
+        convert_button = tk.Button(root, textvariable=convert_text, height=2, width=15)
+        convert_text.set("Convert")
+        convert_button.grid(columnspan=10, column=0, row=3)
+    
 #browse button
 browse_text = tk.StringVar()
 browse_button = tk.Button(root, textvariable=browse_text, command = lambda: openFile(), height = 2, width = 15)
